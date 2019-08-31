@@ -1,0 +1,3 @@
+Put a header logo here in .png and name it header-logo.png
+Put a sign in logo here in .png and name it signin-logo.png
+Look up Tableau documentation for details on resolutions and such.

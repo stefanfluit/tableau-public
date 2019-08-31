@@ -1,0 +1,13 @@
+[Unit]
+Description=tsmbackup
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+Persistent=true
+OnBootSec=120
+OnCalendar==*-*-* 00:00:00
+Unit=auto-update
+
+[Install]
+WantedBy=timers.target

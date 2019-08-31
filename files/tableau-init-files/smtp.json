@@ -1,0 +1,12 @@
+{
+"configKeys": {
+    "svcmonitor.notification.smtp.server": "smtp.gmail.com",
+    "svcmonitor.notification.smtp.send_account": "",
+    "svcmonitor.notification.smtp.port": 587,
+    "svcmonitor.notification.smtp.password": "",
+    "svcmonitor.notification.smtp.ssl_enabled": true,
+    "svcmonitor.notification.smtp.from_address": "",
+    "svcmonitor.notification.smtp.target_addresses": "",
+    "svcmonitor.notification.smtp.canonical_url": ""
+    }
+}

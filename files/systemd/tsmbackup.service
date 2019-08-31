@@ -1,0 +1,9 @@
+[Unit]
+Description=tsmbackup
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/var/scripts/backup-script.sh >> /var/scripts/log/backup-logs
+User=TSM_Admin
+Group=TSM_Admin
