@@ -50,3 +50,10 @@ SSL: Add files for a secure connections with the TSM server. Don't forget to set
 Systemd: You can change the frequency of the backups in the timer, or run backup manually by running: sudo systemctl start tsmbackup.service
 Tableau init files: Change these to your likening. SMTP is there for email. I did this with a JSON file because it enables you to use Google/Gmail, with SSL on. That button dissapeared from Tableau. 
 The registration file needs your contact details. At least fill something in, null is not accepted. 
+```
+
+## Notes
+```
+- Check every variable and adjust them to your details. Also scan the functions, some of them might not suit your needs.
+```
+
