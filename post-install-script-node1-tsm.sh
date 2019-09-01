@@ -14,9 +14,9 @@ set -o pipefail 	# Fail pipe on first error
 declare script_location="/var/tableau-public/"
 declare node2="Enter the fqdn or IP address for node 2."
 declare Audit_Value="wgserver.audit_history_expiration_days"
-declare Cert_File="${script_location}files/ssl/wildcard.datlinq.com.crt"
-declare Key_File="${script_location}files/ssl/wildcard.datlinq.com.key"
-declare Ca_File="${script_location}files/ssl/wildcard.datlinq.com.ca"
+declare Cert_File="${script_location}files/ssl/wildcard.domain.com.crt"
+declare Key_File="${script_location}files/ssl/wildcard.domain.com.key"
+declare Ca_File="${script_location}files/ssl/wildcard.domain.com.ca"
 declare Tsm_Passwd=$(cat ${script_location}files/passwd/tsm-admin.txt)
 declare Tsm_User="TSM_Admin"
 declare SMTP_Setup="${script_location}files/tableau-init-files/smtp.json"
@@ -71,7 +71,7 @@ main() {
     Tsm_Configurator
     # Setup branding and start TSM. 
     Setup_Branding
-    printf "Please visit https://tableau.datlinq.com\n"
+    printf "Please visit https://tableau.domain.com\n"
 }
 
 main
