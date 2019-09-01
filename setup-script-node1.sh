@@ -54,6 +54,7 @@ declare Backup_Script="${script_location}files/backup-script.sh"
 declare BackupScript_Location="/var/scripts/backup-script.sh"
 declare BackupLogLocation="/var/scripts/log/backup-logs"
 declare Tsm_User="TSM_Admin"
+declare aws_script="${script_location}push-to-aws.sh"
 
 # Arrays
 # This is the array the user_add function reads from. Define users you want to add here. Note that these users will be added to sudo users.
@@ -200,6 +201,7 @@ Setup_Systemd_Backup() {
   systemctl enable tsmbackup.service
   chown -R "${Tsm_User}}":"${Tsm_User}}" /var/scripts/*
   chown -R "${Tsm_User}}":"${Tsm_User}}" "${SystemD_Location}"/tsmbackup.*
+  cp "${aws_script}" /var/scripts && chmod +x /var/scripts/push-to-aws.sh
 }
 
 # Configuring firewalld

@@ -3,7 +3,7 @@
 # Author: Stefan Fluit
 # Target: To backup TSM daily
 # I wrote a seperate script for this because it is a stripped version of my production script, which includes backup to
-# our backup servers. WIll add AWS S3 support later.
+# our backup servers. Uncomment row 32 if you dont want the server to back it up to AWS.
 
 declare DefLocation="/var/opt/tableau/tableau_server/data/tabsvc/files/backups/"
 declare DateStamp=$(date +"%m_%d_%Y")
@@ -21,10 +21,15 @@ backup_tsm() {
   tsm maintenance backup --file backup_"${DateStamp}".tsbak
 }
 
+push_to_aws() {
+	source /var/scripts/push_to_aws.sh "${DefLocation}" backup_"${DateStamp}".tsbak
+}
+
 main() {
   printf "Starting TSM backup..\n"
   backup_tsm
   printf "Done with TSM backup..\n"
+  push_to_aws
 }
 
 main
