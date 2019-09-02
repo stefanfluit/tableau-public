@@ -30,9 +30,6 @@ declare repo_Down="http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.
 # Download links for Tableau, downloaded from NAS by now tho.
 declare DL_Link="https://downloads.tableau.com/esdalt/2019.2.3/tableau-server-2019-2-3.x86_64.rpm"
 declare DL_Progr="tableau-server-2019-2-3.x86_64.rpm"
-# Routing and firewall variables.
-declare route_file="/tmp/tableau-transip/files/linux-files/route-eth1"
-declare route_dest="/etc/sysconfig/network-scripts"
 # SSH public keys.
 declare Key_user="${script_location}files/ssh-keys/key_user" # Change to user, add row for more users, and match the filename with pub key.
 # Database driver variables.
@@ -49,11 +46,11 @@ declare HostsFile="${script_location}files/linux-files/hosts"
 # Arrays
 # This is the array the user_add function reads from. Define users you want to add here.
 declare -a users=(
-  "fluit"
-  "vandenberg"
-  "glashio"
-  "TSM_Admin"
+  "User 1.."
+  "user 2.."
+  "Etc.."
 )
+
 # Array with programs to install, used by depends. function.
 declare -a InstallPrograms=(
   "yum-utils"

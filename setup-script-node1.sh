@@ -27,12 +27,9 @@ declare kernel_Type="kernel-ml"
 # Variables needed for repo, to eventually download latest ml kernel. 
 declare repo_Gpg="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org"
 declare repo_Down="http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm"
-# Download links for Tableau, downloaded from NAS by now tho.
+# Download links for Tableau.
 declare DL_Link="https://downloads.tableau.com/esdalt/2019.2.3/tableau-server-2019-2-3.x86_64.rpm"
 declare DL_Progr="tableau-server-2019-2-3.x86_64.rpm"
-# Routing and firewall variables. 
-declare route_file="/tmp/tableau-transip/files/linux-files/route-eth1"
-declare route_dest="/etc/sysconfig/network-scripts"
 # SSH public keys.
 declare Key_user="${script_location}files/ssh-keys/key_user" # Change to user, add row for more users, and match the filename with pub key.
 # Database driver variables. 
@@ -52,8 +49,8 @@ declare SystemD_Location="/etc/systemd/system"
 # The actual backupscript that's gonna be called on by the systemD unit.
 declare Backup_Script="${script_location}files/backup-script.sh"
 declare BackupScript_Location="/var/scripts/backup-script.sh"
-declare BackupLogLocation="/var/scripts/log/backup-logs"
 declare Tsm_User="TSM_Admin"
+declare aws_script="${script_location}push-to-aws.sh"
 
 # Arrays
 # This is the array the user_add function reads from. Define users you want to add here. Note that these users will be added to sudo users.
@@ -153,7 +150,7 @@ Misc_Settings() {
 	echo "${Tsm_Passwd}" | passwd TSM_Admin --stdin 
 }
 
-# Setting the hostname key and generating an SSH key for the server root account. 
+# Setting the hostname.
 Hostname_Key() {
 	hostn=$(cat /etc/hostname)
 	newhost="${hostname}"
@@ -162,6 +159,7 @@ Hostname_Key() {
 }
 
 # Installing several DB drivers we need for accessing data-sources.
+# This was a little function i needed for production, left it hear if someone might need one or two, safe to comment out.
 DB_Drivers() {
 	wget "${PostgresDriver}"
 	yum -y localinstall "${PostgresFile}"
@@ -200,6 +198,7 @@ Setup_Systemd_Backup() {
   systemctl enable tsmbackup.service
   chown -R "${Tsm_User}}":"${Tsm_User}}" /var/scripts/*
   chown -R "${Tsm_User}}":"${Tsm_User}}" "${SystemD_Location}"/tsmbackup.*
+  cp "${aws_script}" /var/scripts && chmod +x /var/scripts/push-to-aws.sh
 }
 
 # Configuring firewalld
