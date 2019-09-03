@@ -15,6 +15,16 @@ declare tsm_version="20192.19.0718.1543"
 declare license_="t" #License set to t for trial, if you have a key, put it here.
 
 # Functions
+# Making sure the user is the right one.
+Check_User() {
+	if [ `/usr/bin/whoami` != 'TSM_Admin' ]; then
+		printf "Switch to TSM_Admin please..\n"
+		exit 1;
+	else
+	  printf "Nice, proceeding..\n"
+	fi
+}
+
 Configure_Path() {
   source /etc/profile.d/tableau_server.sh
 }
@@ -33,6 +43,7 @@ Configure_TSM() {
 
 # Main function to simply call on all the other functions.
 main() {
+  Check_User
   Configure_TSM
 }
 

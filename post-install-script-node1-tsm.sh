@@ -27,6 +27,16 @@ declare repo_passwd="Enter password here for PostgreSQL user"
 declare repo_user="readonly" # Change to 'tableau' if you want write acces, i discourage you to do so, but there are use cases.
 
 # Functions
+# Making sure the user is the right one.
+Check_User() {
+	if [ `/usr/bin/whoami` != 'TSM_Admin' ]; then
+		printf "Switch to TSM_Admin please..\n"
+		exit 1;
+	else
+	  printf "Nice, proceeding..\n"
+	fi
+}
+
 # Function used to export tsm binarys to current path in session to access tsm commands without starting a new session.
 Configure_Path() {
   source /etc/profile.d/tableau_server.sh
@@ -67,11 +77,12 @@ Setup_Branding() {
 
 # Main function to call functions we wrote.
 main() {
-    # Tsm configuration for SMTP and that kind of stuff, as well as setup cluster. 
-    Tsm_Configurator
-    # Setup branding and start TSM. 
-    Setup_Branding
-    printf "Please visit https://tableau.domain.com\n"
+   Check_User
+   # Tsm configuration for SMTP and that kind of stuff, as well as setup cluster.
+   Tsm_Configurator
+   # Setup branding and start TSM.
+   Setup_Branding
+   printf "Please visit https://tableau.domain.com\n"
 }
 
 main
