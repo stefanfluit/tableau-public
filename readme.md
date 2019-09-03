@@ -21,7 +21,7 @@ git clone https://github.com/stefanfluit/tableau-public.git
 ## Run
 
 I suggest you pick a user to perform tasks, i use TSM_Admin user. The names of the scripts will
-be clear on which user it has to run, i did not build functions to warn you. Maybe later. 
+be clear on which user it has to run.
 ```
 Node 1 & 2: git clone https://github.com/stefanfluit/tableau-public.git
 Node 1 & 2: cd tableau-public
