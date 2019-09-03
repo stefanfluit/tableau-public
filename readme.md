@@ -1,3 +1,7 @@
+## Last version check:
+* September 3rd, 2019.
+
+
 # Tableau - Install scripts for CentOS & Tableau 2019.02.03
 
 ## Features
