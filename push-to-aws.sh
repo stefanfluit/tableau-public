@@ -18,14 +18,9 @@ declare path=$1
 s3Upload() {
   local path=$1
   local file=$2
-
-  local acl="${S3_ACL}"
-  local bucket="${S3_BUCKET}"
-  local bucket_path="${S3_BUCKET_PATH}"
-
   local date=$(date +"%a, %d %b %Y %T %z")
   local content_type="application/octet-stream"
-  local sig_string="PUT\n\n$content_type\n$date\n$acl\n/$bucket$bucket_path$file"
+  local sig_string="PUT\n\n${content_type}\n${date}\n${acl}\n/${S3_BUCKET}${S3_BUCKET_PATH}${file}"
   local signature=$(echo -en "${sig_string}" | openssl sha1 -hmac "${AWS_SECRET}" -binary | base64)
 
   curl -X PUT -T "$path/$file" \
@@ -34,7 +29,7 @@ s3Upload() {
     -H "Content-Type: ${content_type}" \
     -H "${acl}" \
     -H "Authorization: AWS ${AWS_KEY}:${signature}" \
-    "https://${bucket.s3.amazonaws.com}${bucket_path}${file}"
+    "https://${bucket.s3.amazonaws.com}${S3_BUCKET_PATH}${file}"
 }
 
 # loop through the path and upload the files
