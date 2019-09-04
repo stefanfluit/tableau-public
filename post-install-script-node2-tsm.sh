@@ -29,7 +29,7 @@ Check_User() {
 Setup_Cluster() {
   sudo cp /home/TSM_Admin/bootstrap.json "${Scripts_Dir}"
   printf "Copied bootstrap to dir on node2.\n"
-  cd "${Scripts_Dir}" && sudo ./initialize-tsm -b bootstrap.json -u "${Tsm_User}" -p "${Tsm_Passwd}" --accepteula
+  cd "${Scripts_Dir}" && sudo ./initialize-tsm -b bootstrap.json --accepteula
   printf "Done\n"
 }
 
