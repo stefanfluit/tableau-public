@@ -7,12 +7,13 @@
 ## Features
 
 * Sets up server, users, permissions, kernel patch, DB drivers, and Tableau. 
-* Please read the script thorougly before running. 
+* Please read the script thoroughly before running. 
 * Supported OS: CentOS 7.x 
+* Tested OS: CentOS 7.6
 
 ## Requirements
 
-* Minimum of 8 (v) cores and 16GB RAM.
+* Minimum of 8 (v) cores and 16GB RAM per server/instance/VPS.
 
 
 ## Download:
