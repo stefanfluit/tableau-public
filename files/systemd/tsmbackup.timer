@@ -1,13 +1,10 @@
 [Unit]
 Description=tsmbackup
-RefuseManualStart=no
-RefuseManualStop=no
 
 [Timer]
-Persistent=true
-OnBootSec=120
-OnCalendar==*-*-* 00:00:00
-Unit=auto-update
+OnCalendar=*-*-* 03:00:00
+Unit=tsmbackup.service
+Persistent=false
 
 [Install]
 WantedBy=timers.target

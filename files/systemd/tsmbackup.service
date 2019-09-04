@@ -4,6 +4,6 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/var/scripts/backup-script.sh >> /var/scripts/log/backup-logs
+ExecStart=/var/scripts/backup-script.sh
 User=TSM_Admin
 Group=TSM_Admin
