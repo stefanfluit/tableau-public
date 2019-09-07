@@ -36,8 +36,8 @@ Setup_Cluster() {
 # Main function to call on functions we wrote.
 main() {
   Check_User
-    # Init TSM with the bootstrap file generated on the first node, to create and join a cluster.
-    Setup_Cluster
+  # Init TSM with the bootstrap file generated on the first node, to create and join a cluster.
+  Setup_Cluster
 }
 
 main

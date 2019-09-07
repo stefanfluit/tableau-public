@@ -195,7 +195,7 @@ Setup_Systemd_Backup() {
   cp "${SystemD_Unit}" "${SystemD_Location}"
   cp "${SystemD_Timer}" "${SystemD_Location}"
   systemctl daemon-reload
-  systemctl enable tsmbackup.service
+  systemctl enable synology-backup.service
   chown -R "${Tsm_User}}":"${Tsm_User}}" /var/scripts/*
   chown -R "${Tsm_User}}":"${Tsm_User}}" "${SystemD_Location}"/tsmbackup.*
   cp "${aws_script}" /var/scripts && chmod +x /var/scripts/push-to-aws.sh
